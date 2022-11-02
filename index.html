@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boolzapp</title>
+    <!-- vue -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script> -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="st-block"></div>
+    <div class="nd-block"></div>
+    <div id="app">
+      <nav>
+        <div class="account">
+          <div class="account-info">
+            <img src="img/avatar_io.jpg" alt="" srcset="" />
+            <span class="account-name">Sofia</span>
+          </div>
+          <div class="account-functions">
+            <i class="fa-solid fa-circle-notch"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="notifications">
+          <div>
+            <i class="fa-solid fa-bell-slash"></i>
+          </div>
+          <div>
+            <p>Recieve new messages notifications</p>
+            <a href="">Activate desktop notifications</a>
+          </div>
+        </div>
+        <div class="searchbar">
+          <div class="div">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              name="search-contacts"
+              id="search-contacts"
+              placeholder="Search for or begin a new chat"
+            />
+          </div>
+        </div>
+        <div class="chat-history">
+          <div v-for="chat in contacts" class="previous-chat">
+            <div class="contact-img">
+              <img :src="(`/img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
+            </div>
+            <div class="chat-history-info">
+              <div>
+                <p class="contact-name">{{chat.name}}</p>
+                <p class="last-msg">Ultimo messaggio</p>
+              </div>
+              <span class="last-msg-time">12:30</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="main-content"></div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
