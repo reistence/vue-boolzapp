@@ -8,6 +8,7 @@ html {
 }
 img {
   max-width: 100%;
+  cursor: pointer;
 }
 ul {
   list-style: none;
@@ -15,6 +16,9 @@ ul {
 a {
   color: inherit;
   text-decoration: none;
+}
+i {
+  cursor: pointer;
 }
 
 body {
@@ -142,25 +146,26 @@ nav {
 
 .chat-history {
   width: 100%;
-  height: calc(100% - 12em);
+  height: calc(100% - 8em);
   overflow-y: scroll;
 }
 .previous-chat {
-  height: calc(100% / 9);
+  min-height: calc(100% / 10);
   width: 100%;
   gap: 0.1em;
   padding: 0.5em;
   display: flex;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 .contact-img {
   height: 100%;
-  width: 30%;
+  width: 20%;
 }
 .previous-chat .contact-img img {
-  width: 5vw;
-  height: 5vw;
+  width: 3em;
+  height: 3em;
   object-fit: cover;
 
   border-radius: 50%;
@@ -243,6 +248,8 @@ nav {
   padding: 0.5em;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  position: relative;
 }
 
 .msg span {
@@ -254,6 +261,7 @@ nav {
 .sent {
   background-color: #d5f9ba;
   right: 0;
+  padding: 0.5em 1.5em 0.5em 0.5em;
   align-self: flex-end;
   margin-bottom: 0.4em;
 }
@@ -263,7 +271,31 @@ nav {
   margin-right: 50%;
   margin-bottom: 0.4em;
 }
+.msg .msg-options {
+  position: absolute;
+  right: 3px;
+  font-size: 1.1rem;
+  visibility: hidden;
+}
 
+.msg-menu {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  background-color: white;
+  padding: 0.5em;
+  border-radius: 15px;
+  z-index: 999;
+  border: 1px solid grey;
+  display: none;
+}
+.msg-menu.show-menu {
+  display: block;
+}
+
+.msg:hover .msg-options {
+  visibility: visible;
+}
 .write-input {
   background-color: #eaeaea;
   padding: 0.5em;

@@ -168,6 +168,8 @@ createApp({
       ],
       currentChat: 0,
       userMsg: "",
+      msgMenu: false,
+      userSearch: "",
     };
   },
   methods: {
@@ -185,6 +187,18 @@ createApp({
       };
       this.contacts[index].messages.push(newMsg);
       this.userMsg = "";
+    },
+    deleteMsg(index) {
+      this.message.splice(index, 1);
+    },
+    showMsgMenu() {
+      this.msgMenu = !this.msgMenu;
+      console.log(this.msgMenu);
+    },
+    filteredChats() {
+      return this.contacts.filter((contact) =>
+        contact.name.include(this.userSearch)
+      );
     },
   },
 }).mount("#app");

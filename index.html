@@ -52,18 +52,19 @@
             <a href="">Activate desktop notifications</a>
           </div>
         </div>
-        <div class="searchbar">
-          <div class="div">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="text"
-              name="search-contacts"
-              id="search-contacts"
-              placeholder="Search for or begin a new chat"
-            />
-          </div>
-        </div>
         <div class="chat-history">
+          <div class="searchbar">
+            <div class="div">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                v-model="userSearch"
+                type="text"
+                name="search-contacts"
+                id="search-contacts"
+                placeholder="Search for or begin a new chat"
+              />
+            </div>
+          </div>
           <div
             v-for="chat,index in contacts"
             @click="showChat(index)"
@@ -112,11 +113,21 @@
             <div class="msg received">{{contact.messages[1].message}}</div> -->
             <div
               class="msg"
-              v-for="message in contact.messages"
+              v-for="message,indexMsg in contact.messages"
               :class="message.status === 'sent'? 'sent' : 'received' "
             >
               {{message.message}}
               <span>{{message.date}}</span>
+              <span @click="showMsgMenu" class="msg-options">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+              <!-- <div
+                @click="deleteMsg(indexMsg)"
+                :class="msgMenu ? 'show-menu' : '' "
+                class="msg-menu"
+              >
+                <p>Delete Message</p>
+              </div> -->
             </div>
           </div>
           <!--  QUI -->
