@@ -103,7 +103,14 @@
           <div class="chat">
             <!-- <div class="msg sent">{{contact.messages[0].message}}</div>
             <div class="msg received">{{contact.messages[1].message}}</div> -->
-            <div class="msg"></div>
+            <div
+              class="msg"
+              v-for="message in contact.messages"
+              :class="message.status === 'sent'? 'sent' : 'received' "
+            >
+              {{message.message}}
+              <span>{{message.date}}</span>
+            </div>
           </div>
         </div>
         <div class="write-input">
