@@ -167,12 +167,24 @@ createApp({
         },
       ],
       currentChat: 0,
+      userMsg: "",
     };
   },
   methods: {
     showChat(clickedChat) {
       this.currentChat = clickedChat;
       console.log(this.currentChat);
+    },
+    sendMsg(index) {
+      let date = new Date().toLocaleString().replace(",", "");
+
+      const newMsg = {
+        date: date,
+        message: this.userMsg,
+        status: "sent",
+      };
+      this.contacts[index].messages.push(newMsg);
+      this.userMsg = "";
     },
   },
 }).mount("#app");
