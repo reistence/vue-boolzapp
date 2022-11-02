@@ -57,7 +57,11 @@
           </div>
         </div>
         <div class="chat-history">
-          <div v-for="chat in contacts" class="previous-chat">
+          <div
+            v-for="chat,index in contacts"
+            @click="showChat(index)"
+            class="previous-chat"
+          >
             <div class="contact-img">
               <img :src="(`/img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
             </div>
@@ -71,7 +75,48 @@
           </div>
         </div>
       </nav>
-      <div class="main-content"></div>
+      <div class="main-content">
+        <div
+          v-for="contact,index in contacts"
+          class="current-chat"
+          :class="currentChat === index ? 'active' : ''"
+        >
+          <div class="account">
+            <div class="current-account-details">
+              <img
+                class="current-contact-img"
+                src="img/avatar_2.jpg"
+                alt=""
+                srcset=""
+              />
+              <div>
+                <p class="current-contact-name">{{contact.name}}</p>
+                <p class="current-contact-last-access">ultimo accesso</p>
+              </div>
+            </div>
+            <div class="current-account-functions">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-paperclip"></i>
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+          </div>
+          <div class="chat">
+            <!-- <div class="msg sent">{{contact.messages[0].message}}</div>
+            <div class="msg received">{{contact.messages[1].message}}</div> -->
+            <div class="msg"></div>
+          </div>
+        </div>
+        <div class="write-input">
+          <i class="fa-regular fa-face-smile"></i>
+          <input
+            type="text"
+            name="msg"
+            id="msg"
+            placeholder="Write a message"
+          />
+          <i class="fa-solid fa-microphone"></i>
+        </div>
+      </div>
     </div>
     <script src="js/script.js"></script>
   </body>

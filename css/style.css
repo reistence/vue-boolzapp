@@ -44,6 +44,8 @@ body .nd-block {
   border-radius: 10px;
   width: 80%;
   height: 90%;
+  overflow: hidden;
+  display: flex;
 }
 
 nav {
@@ -145,16 +147,22 @@ nav {
   overflow-y: scroll;
 }
 .previous-chat {
-  height: calc(100% / 7);
+  height: calc(100% / 9);
   width: 100%;
-  gap: 0.8em;
+  gap: 0.1em;
   padding: 0.5em;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.contact-img {
+  height: 100%;
+  width: 30%;
 }
 .previous-chat .contact-img img {
-  width: 3em;
-  height: 3em;
+  width: 5vw;
+  height: 5vw;
+  object-fit: cover;
 
   border-radius: 50%;
 }
@@ -175,4 +183,89 @@ nav {
   color: grey;
   align-self: flex-start;
   font-size: 0.6rem;
+}
+
+.main-content {
+  height: 100%;
+  width: 75%;
+}
+.main-content .account {
+  width: 100%;
+  padding: 0 1em;
+}
+
+.current-chat {
+  height: calc(100% - 4em);
+  width: 100%;
+  display: none;
+}
+
+.current-chat.active {
+  display: block;
+}
+
+.main-content .current-account-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4em;
+  align-items: center;
+}
+.current-account-details img {
+  width: 3vw;
+  height: 3vw;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.current-contact-last-access {
+  font-size: 0.9rem;
+  color: grey;
+}
+.current-account-functions {
+  display: flex;
+  gap: 0.7em;
+  color: grey;
+  font-size: 1.4rem;
+}
+
+.chat {
+  background-image: url("../img/mine.jpg");
+  width: 100%;
+  height: calc(100% - 3em);
+  padding: 0.8em;
+}
+
+.msg {
+  border-radius: 20px;
+  max-width: 60%;
+  width: fit-content;
+  padding: 0.5em;
+}
+.sent {
+  background-color: #d5f9ba;
+  right: 0;
+  margin-left: 62%;
+}
+.received {
+  background-color: white;
+  left: 0;
+  margin-right: 50%;
+}
+
+.write-input {
+  background-color: #eaeaea;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+  height: 3em;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.write-input input {
+  width: 85%;
+  height: 3em;
+  border: none;
+  padding: 0.5em;
+  border-radius: 9px;
 }

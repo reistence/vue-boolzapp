@@ -166,6 +166,13 @@ createApp({
           ],
         },
       ],
+      currentChat: 0,
     };
+  },
+  methods: {
+    showChat(clickedChat) {
+      this.currentChat = clickedChat;
+      console.log(this.currentChat);
+    },
   },
 }).mount("#app");
