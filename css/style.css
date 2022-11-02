@@ -42,7 +42,7 @@ body .nd-block {
   transform: translate(-50%, -50%);
   border: 1px solid black;
   border-radius: 10px;
-  width: 95%;
+  width: 80%;
   height: 90%;
 }
 
@@ -162,7 +162,7 @@ nav {
 .previous-chat .chat-history-info {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   align-items: flex-start;
   height: 100%;
 }
