@@ -116,9 +116,12 @@
               />
               <div>
                 <p class="current-contact-name">{{contact.name}}</p>
-                <p class="current-contact-last-access">
+                <p v-show="!writing" class="current-contact-last-access">
                   Last seen:
                   {{contact.messages[contact.messages.length-1].date}}
+                </p>
+                <p class="writing" v-show="writing">
+                  {{contact.name}} is writing....
                 </p>
               </div>
             </div>

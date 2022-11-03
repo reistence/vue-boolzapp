@@ -171,12 +171,12 @@ createApp({
       currentMsg: 0,
       msgMenu: false,
       userSearch: "",
+      writing: false,
     };
   },
   methods: {
     showChat(clickedChat) {
       this.currentChat = clickedChat;
-      console.log(this.currentChat);
     },
     sendMsg(index) {
       let date = new Date().toLocaleString().replace(",", "");
@@ -188,6 +188,7 @@ createApp({
       };
       this.contacts[index].messages.push(newMsg);
       this.userMsg = "";
+      this.writing = true;
       this.automaticMsg(index);
     },
     automaticMsg(index) {
@@ -200,6 +201,7 @@ createApp({
           status: "received",
         };
         this.contacts[index].messages.push(newMsg);
+        this.writing = false;
       }, 2000);
     },
     deleteMsg(index) {
@@ -208,11 +210,13 @@ createApp({
     showMsgMenu(index) {
       if (!this.msgMenu) {
         this.currentMsg = index;
+        console.log(this.currentMsg);
         console.log(this.contacts[this.currentChat].messages[index]);
         this.msgMenu = !this.msgMenu;
-        console.log(this.msgMenu);
       } else {
+        this.currentMsg = null;
         this.msgMenu = false;
+        console.log(this.currentMsg);
       }
     },
   },

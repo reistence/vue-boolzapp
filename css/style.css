@@ -224,6 +224,10 @@ nav {
   font-size: 0.9rem;
   color: grey;
 }
+.writing {
+  color: grey;
+  font-style: oblique;
+}
 .current-account-functions {
   display: flex;
   gap: 0.7em;
