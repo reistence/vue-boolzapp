@@ -26,10 +26,15 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- google font - Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="st-block"></div>
-    <div class="nd-block"></div>
     <div id="app">
       <!-- NAV -->
       <nav>
@@ -57,22 +62,23 @@
           </div>
         </div>
         <!-- NOTIFICATIONS -->
+
+        <!-- SEARCHBAR -->
+        <div class="searchbar">
+          <div class="div">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              v-model="userSearch"
+              type="text"
+              name="search-contacts"
+              id="search-contacts"
+              placeholder="Search for or begin a new chat"
+            />
+          </div>
+        </div>
+        <!-- /SEARCHBAR -->
         <!-- CHAT HISTORY -->
         <div class="chat-history">
-          <!-- SEARCHBAR -->
-          <div class="searchbar">
-            <div class="div">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                v-model="userSearch"
-                type="text"
-                name="search-contacts"
-                id="search-contacts"
-                placeholder="Search for or begin a new chat"
-              />
-            </div>
-          </div>
-          <!-- /SEARCHBAR -->
           <!-- CHATS -->
           <div
             v-for="chat,index in contacts"
@@ -116,12 +122,12 @@
               />
               <div>
                 <p class="current-contact-name">{{contact.name}}</p>
-                <p v-show="!writing" class="current-contact-last-access">
+                <p v-if="!typing" class="current-contact-last-access">
                   Last seen:
                   {{contact.messages[contact.messages.length-1].date}}
                 </p>
-                <p class="writing" v-show="writing">
-                  {{contact.name}} is writing....
+                <p class="typing" v-else="typing">
+                  {{contact.name}} is typing....
                 </p>
               </div>
             </div>
@@ -148,11 +154,11 @@
                 <i class="fa-solid fa-chevron-down"></i>
               </span>
               <div
-                @click="deleteMsg(indexMsg)"
                 :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
                 class="msg-menu"
               >
-                <p>Delete Message</p>
+                <p @click="deleteMsg(indexMsg)">Delete Message</p>
+                <p>Message Info</p>
               </div>
             </div>
             <!-- /MESSAGES -->

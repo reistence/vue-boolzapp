@@ -5,6 +5,7 @@
 }
 html {
   font-size: 100%;
+  font-family: "Lato", sans-serif;
 }
 img {
   max-width: 100%;
@@ -20,22 +21,20 @@ a {
 i {
   cursor: pointer;
 }
+i:hover {
+  transform: scale(1.06);
+}
 
 body {
   width: 100%;
   height: 100vh;
   position: relative;
-}
-
-body .st-block {
-  background-color: #009688;
-  height: 15%;
-  width: 100%;
-}
-body .nd-block {
-  background-color: #d9dbd5;
-  height: 85%;
-  width: 100%;
+  background-image: linear-gradient(
+    #009688 0%,
+    #009688 15vh,
+    #d9dbd5 15vh,
+    #d9dbd5 100vh
+  );
 }
 
 #app {
@@ -44,7 +43,7 @@ body .nd-block {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
+  border: 1px solid grey;
   border-radius: 10px;
   width: 80%;
   height: 90%;
@@ -76,7 +75,7 @@ nav {
   width: 3em;
   height: 3em;
   border-radius: 50%;
-  padding: 0.2em;
+  padding: 0.4em;
 }
 
 .account-functions {
@@ -98,10 +97,6 @@ nav {
   gap: 0.5em;
 }
 .notifications div:first-child {
-  background-color: white;
-
-  border-radius: 50%;
-  padding: 0.5em;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -109,13 +104,22 @@ nav {
 
 .notifications i {
   color: #8edbfc;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   display: block;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.4em;
+}
+.notifications div p {
+  font-size: 0.8rem;
+  min-width: max-content;
 }
 
 .notifications div a {
   text-decoration: underline;
   color: grey;
+  font-size: 0.7rem;
+  width: max-content;
 }
 
 .searchbar {
@@ -146,7 +150,7 @@ nav {
 
 .chat-history {
   width: 100%;
-  height: calc(100% - 8em);
+  height: calc(100% - 11em);
   overflow-y: scroll;
 }
 .previous-chat {
@@ -224,7 +228,7 @@ nav {
   font-size: 0.9rem;
   color: grey;
 }
-.writing {
+.typing {
   color: grey;
   font-style: oblique;
 }
@@ -285,7 +289,9 @@ nav {
 
 .msg-menu {
   position: absolute;
-  bottom: 15px;
+  bottom: -70px;
+  width: 10em;
+  height: 4em;
   left: 0;
   background-color: white;
   padding: 0.5em;
@@ -293,6 +299,9 @@ nav {
   z-index: 999;
   border: 1px solid grey;
   display: none;
+}
+.msg-menu > p:hover {
+  border-bottom: 1px solid grey;
 }
 .msg-menu.show-menu {
   display: block;

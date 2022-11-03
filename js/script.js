@@ -171,12 +171,13 @@ createApp({
       currentMsg: 0,
       msgMenu: false,
       userSearch: "",
-      writing: false,
+      typing: false,
     };
   },
   methods: {
     showChat(clickedChat) {
       this.currentChat = clickedChat;
+      this.currentMsg = null;
     },
     sendMsg(index) {
       let date = new Date().toLocaleString().replace(",", "");
@@ -188,7 +189,7 @@ createApp({
       };
       this.contacts[index].messages.push(newMsg);
       this.userMsg = "";
-      this.writing = true;
+      this.typing = true;
       this.automaticMsg(index);
     },
     automaticMsg(index) {
@@ -201,22 +202,23 @@ createApp({
           status: "received",
         };
         this.contacts[index].messages.push(newMsg);
-        this.writing = false;
+        this.typing = false;
       }, 2000);
     },
     deleteMsg(index) {
       this.contacts[this.currentChat].messages.splice(index, 1);
+      this.currentMsg = null;
     },
     showMsgMenu(index) {
       if (!this.msgMenu) {
         this.currentMsg = index;
-        console.log(this.currentMsg);
-        console.log(this.contacts[this.currentChat].messages[index]);
+        // console.log(this.currentMsg);
+        // console.log(this.contacts[this.currentChat].messages[index]);
         this.msgMenu = !this.msgMenu;
       } else {
         this.currentMsg = null;
         this.msgMenu = false;
-        console.log(this.currentMsg);
+        // console.log(this.currentMsg);
       }
     },
   },
