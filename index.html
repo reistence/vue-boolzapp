@@ -158,7 +158,7 @@
               class="msg"
               v-for="message,indexMsg in contact.messages"
               :class="message.status === 'sent'? 'sent' : 'received' "
-              v-if="msgCount"
+              v-show="msgCount"
             >
               {{message.message}}
               <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>

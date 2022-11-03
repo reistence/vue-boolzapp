@@ -192,19 +192,26 @@ createApp({
     showChat(clickedChat) {
       this.currentChat = clickedChat;
       this.currentMsg = null;
+      this.msgCount = true;
     },
     sendMsg(index) {
-      let date = new Date().toLocaleString().replace(",", "");
+      if (this.userMsg != "") {
+        let date = new Date().toLocaleString().replace(",", "");
 
-      const newMsg = {
-        date: date,
-        message: this.userMsg,
-        status: "sent",
-      };
-      this.contacts[index].messages.push(newMsg);
-      this.userMsg = "";
-      this.typing = true;
-      this.automaticMsg(index);
+        const newMsg = {
+          date: date,
+          message: this.userMsg,
+          status: "sent",
+        };
+        this.contacts[index].messages.push(newMsg);
+        this.userMsg = "";
+        this.typing = true;
+
+        this.automaticMsg(index);
+        this.$nextTick(() => {
+          this.scrollToEnd();
+        });
+      }
     },
     automaticMsg(index) {
       setTimeout(() => {
@@ -221,6 +228,9 @@ createApp({
         };
         this.contacts[index].messages.push(newMsg);
         this.typing = false;
+        this.$nextTick(() => {
+          this.scrollToEnd();
+        });
       }, 2000);
     },
     deleteMsg(index) {
@@ -246,12 +256,22 @@ createApp({
     deleteAllMsg(index) {
       this.msgCount = !this.msgCount;
       console.log(this.contacts[index].messages);
-      this.contacts[index].messages = [];
+      this.contacts[index].messages
+        .splice
+        // 0,
+        // this.contacts[index].messages.length - 1
+        ();
       this.chatOptions = false;
+      console.log(this.contacts[index].messages);
     },
     deleteWholeChat(index) {
       this.contacts.splice(index, 1);
       this.chatOptions = false;
+    },
+    scrollToEnd() {
+      const chat = document.querySelector(".chat");
+      const scrollHeight = chat.scrollHeight;
+      chat.scrollTop = scrollHeight;
     },
   },
 }).mount("#app");
