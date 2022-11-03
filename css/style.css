@@ -299,12 +299,50 @@ nav {
   align-self: flex-end;
   margin-bottom: 0.4em;
 }
+.sent:before {
+  content: "";
+  position: absolute;
+  visibility: visible;
+  top: 1px;
+  right: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #d5f9ba;
+}
+.sent::after {
+  content: "";
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  right: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid #d5f9ba;
+  clear: both;
+}
 .received {
   background-color: white;
   left: 0;
   padding: 0.5em 1.5em 0.5em 0.5em;
   margin-right: 50%;
   margin-bottom: 0.4em;
+}
+.received:before {
+  content: "";
+  position: absolute;
+  visibility: visible;
+  top: 1px;
+  left: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid white;
+}
+.received::after {
+  content: "";
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  left: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid white;
+  clear: both;
 }
 .msg .msg-options {
   position: absolute;
