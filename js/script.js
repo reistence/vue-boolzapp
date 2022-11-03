@@ -223,7 +223,10 @@ createApp({
     },
     deleteAllMsg(index) {
       console.log(this.contacts[index].messages);
-      this.contacts[index].messages = {};
+      this.contacts[index].messages = [];
+    },
+    deleteWholeChat(index) {
+      this.contacts.splice(index, 1);
     },
   },
 }).mount("#app");
