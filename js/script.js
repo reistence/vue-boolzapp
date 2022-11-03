@@ -189,54 +189,69 @@ createApp({
     };
   },
   methods: {
+    // show clicked chat in chat history and show it into main-content
     showChat(clickedChat) {
       this.currentChat = clickedChat;
       this.currentMsg = null;
       this.msgCount = true;
     },
+    // send msg
     sendMsg(index) {
+      // only if not empty string
       if (this.userMsg != "") {
+        // get current date and time
         let date = new Date().toLocaleString().replace(",", "");
-
+        // create new masg obj
         const newMsg = {
           date: date,
           message: this.userMsg,
           status: "sent",
         };
+        // push new msg into messages array
         this.contacts[index].messages.push(newMsg);
+        //clear input field
         this.userMsg = "";
+        // set typing to true
         this.typing = true;
-
+        // start automated answer
         this.automaticMsg(index);
+        // scroll to last msg in chat
         this.$nextTick(() => {
           this.scrollToEnd();
         });
       }
     },
+    // automated msg
     automaticMsg(index) {
       setTimeout(() => {
+        //get current date/time
         let date = new Date().toLocaleString().replace(",", "");
-
+        // gen rnd nr
         const rndMsg = Math.floor(
           Math.random() * (this.rndAnswers.length - 1 - 0 + 1) + 0
         );
-
+        // create new msg bj
         const newMsg = {
           date: date,
+          // set message to the rnd nr index of rndAnswers
           message: this.rndAnswers[rndMsg],
           status: "received",
         };
+        // push new msg into messages array
         this.contacts[index].messages.push(newMsg);
         this.typing = false;
+        // scroll to last msg in chat
         this.$nextTick(() => {
           this.scrollToEnd();
         });
       }, 2000);
     },
+    // deleted current msg
     deleteMsg(index) {
       this.contacts[this.currentChat].messages.splice(index, 1);
       this.currentMsg = null;
     },
+    // show options menu when msg chevron is clicked
     showMsgMenu(index) {
       if (!this.msgMenu) {
         this.currentMsg = index;
@@ -249,10 +264,12 @@ createApp({
         // console.log(this.currentMsg);
       }
     },
+    // show chat options menu when dots are clicked
     showChatOptions() {
       this.chatOptions = !this.chatOptions;
       // console.log(this.chatOptions);
     },
+    // delete all the msgs of the current chat
     deleteAllMsg(index) {
       this.msgCount = !this.msgCount;
       console.log(this.contacts[index].messages);
@@ -264,10 +281,12 @@ createApp({
       this.chatOptions = false;
       console.log(this.contacts[index].messages);
     },
+    // delete whole object in contacts
     deleteWholeChat(index) {
       this.contacts.splice(index, 1);
       this.chatOptions = false;
     },
+    // set the params of scrolling behaviour
     scrollToEnd() {
       const chat = document.querySelector(".chat");
       const scrollHeight = chat.scrollHeight;
