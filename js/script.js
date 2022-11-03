@@ -168,6 +168,7 @@ createApp({
       ],
       currentChat: 0,
       userMsg: "",
+      currentMsg: 0,
       msgMenu: false,
       userSearch: "",
     };
@@ -189,16 +190,19 @@ createApp({
       this.userMsg = "";
     },
     deleteMsg(index) {
-      this.message.splice(index, 1);
+      console.log(this.contacts.message);
+      this.contacts.messages.splice(index, 1);
     },
-    showMsgMenu() {
+    showMsgMenu(index) {
+      this.currentMsg = index;
+      console.log(this.contacts.messages[index]);
       this.msgMenu = !this.msgMenu;
       console.log(this.msgMenu);
     },
-    filteredChats() {
-      return this.contacts.filter((contact) =>
-        contact.name.include(this.userSearch)
-      );
-    },
+    // filteredChats() {
+    //   return this.contacts.filter((contact) =>
+    //     contact.name.include(this.userSearch)
+    //   );
+    // },
   },
 }).mount("#app");

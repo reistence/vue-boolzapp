@@ -31,7 +31,9 @@
     <div class="st-block"></div>
     <div class="nd-block"></div>
     <div id="app">
+      <!-- NAV -->
       <nav>
+        <!-- ACCOUNT -->
         <div class="account">
           <div class="account-info">
             <img src="img/avatar_io.jpg" alt="" srcset="" />
@@ -43,6 +45,8 @@
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>
+        <!-- /ACCOUNT -->
+        <!-- NOTIFICATIONS -->
         <div class="notifications">
           <div>
             <i class="fa-solid fa-bell-slash"></i>
@@ -52,7 +56,10 @@
             <a href="">Activate desktop notifications</a>
           </div>
         </div>
+        <!-- NOTIFICATIONS -->
+        <!-- CHAT HISTORY -->
         <div class="chat-history">
+          <!-- SEARCHBAR -->
           <div class="searchbar">
             <div class="div">
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -65,8 +72,11 @@
               />
             </div>
           </div>
+          <!-- /SEARCHBAR -->
+          <!-- CHATS -->
           <div
             v-for="chat,index in contacts"
+            v-show="chat.name.toLowerCase().includes(userSearch) "
             @click="showChat(index)"
             class="previous-chat"
           >
@@ -81,14 +91,19 @@
               <span class="last-msg-time">12:30</span>
             </div>
           </div>
+          <!-- /CHATS -->
         </div>
+        <!-- /CHAT HISTORY -->
       </nav>
+      <!--/NAV -->
+      <!-- MAIN CONTENT -->
       <div class="main-content">
         <div
           v-for="contact,index in contacts"
           class="current-chat"
           :class="currentChat === index ? 'active' : ''"
         >
+          <!-- ACCOUNT CHAT -->
           <div class="account">
             <div class="current-account-details">
               <img
@@ -108,29 +123,34 @@
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
           </div>
+          <!-- /ACCOUNT CHAT -->
+          <!--  CHAT -->
           <div class="chat">
             <!-- <div class="msg sent">{{contact.messages[0].message}}</div>
             <div class="msg received">{{contact.messages[1].message}}</div> -->
+            <!-- MESSAGES -->
             <div
               class="msg"
               v-for="message,indexMsg in contact.messages"
               :class="message.status === 'sent'? 'sent' : 'received' "
             >
               {{message.message}}
-              <span>{{message.date}}</span>
-              <span @click="showMsgMenu" class="msg-options">
+              <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>
+              <span @click="showMsgMenu(indexMsg)" class="msg-options">
                 <i class="fa-solid fa-chevron-down"></i>
               </span>
-              <!-- <div
+              <div
                 @click="deleteMsg(indexMsg)"
                 :class="msgMenu ? 'show-menu' : '' "
                 class="msg-menu"
               >
                 <p>Delete Message</p>
-              </div> -->
+              </div>
             </div>
+            <!-- /MESSAGES -->
           </div>
-          <!--  QUI -->
+          <!-- /CHAT -->
+          <!--  INPUT MESSAGES -->
           <div class="write-input">
             <i class="fa-regular fa-face-smile"></i>
             <input
@@ -143,8 +163,10 @@
             />
             <i class="fa-solid fa-microphone"></i>
           </div>
+          <!--  INPUT MESSAGES -->
         </div>
       </div>
+      <!-- MAIN CONTENT -->
     </div>
     <script src="js/script.js"></script>
   </body>
