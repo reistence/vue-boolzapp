@@ -86,6 +86,71 @@ nav {
   justify-content: flex-end;
   width: 40%;
   font-size: 1.4rem;
+  position: relative;
+}
+.active {
+  display: block;
+}
+
+.app-menu {
+  position: absolute;
+  background-color: white;
+  top: 45px;
+  z-index: 99;
+  border-radius: 10px;
+  border: 1px solid grey;
+  left: 0;
+  width: 9em;
+  height: 3em;
+  padding: 0.5em;
+  font-size: 1rem;
+  display: none;
+}
+.app-menu.active {
+  display: block;
+}
+.app-menu > p {
+  cursor: pointer;
+}
+.app-menu > p:hover {
+  border-bottom: 1px solid #009688;
+  color: #009688;
+}
+
+.add-contact {
+  position: absolute;
+  top: 45px;
+  left: 145px;
+  z-index: 9999;
+  background-color: white;
+  width: 22em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 0.5em;
+  font-size: 1rem;
+  display: none;
+}
+.add-contact.active {
+  display: block;
+}
+.add-contact > * {
+  margin-bottom: 0.5em;
+}
+.add-contact input {
+  padding: 0.3em;
+  width: 90%;
+}
+.add-contact input:hover {
+  transform: scale(1.02);
+  border: 1px solid #009688;
+}
+
+.submit-contact {
+  border: none;
+  padding: 0.5em;
+  background-color: #009688;
+  color: white;
+  border-radius: 10px;
 }
 
 .notifications {
@@ -347,6 +412,7 @@ nav {
 .msg .msg-options {
   position: absolute;
   right: 3px;
+  height: 3rem;
   font-size: 1.1rem;
   visibility: hidden;
 }

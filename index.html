@@ -47,7 +47,23 @@
           <div class="account-functions">
             <i class="fa-solid fa-circle-notch"></i>
             <i class="fa-solid fa-message"></i>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <i @click="showAppMenu" class="fa-solid fa-ellipsis-vertical"></i>
+            <div :class="!appMenuVisibility ? 'active' : ''" class="app-menu">
+              <p @click="showNewContactMenu">Add new contact</p>
+            </div>
+            <div :class="!addContactMenu ? 'active' : ''" class="add-contact">
+              <div>
+                <label for="added-name">Insert contact name: </label>
+                <input type="text" id="added-name" v-model="newContactName" />
+              </div>
+              <div>
+                <label for="added-name">Insert contact img url: </label>
+                <input type="text" id="added-name" v-model="newContactImg" />
+              </div>
+              <button @click="addNewContact" class="submit-contact">
+                Add new contact
+              </button>
+            </div>
           </div>
         </div>
         <!-- /ACCOUNT -->

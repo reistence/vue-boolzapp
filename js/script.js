@@ -186,6 +186,10 @@ createApp({
         "Non so proprio",
         "bho",
       ],
+      newContactName: "",
+      newContactImg: "",
+      appMenuVisibility: true,
+      addContactMenu: true,
     };
   },
   methods: {
@@ -291,6 +295,35 @@ createApp({
       const chat = document.querySelector(".chat");
       const scrollHeight = chat.scrollHeight;
       chat.scrollTop = scrollHeight;
+    },
+    // add new contact into contacts[]
+    addNewContact() {
+      // create new obj contact
+      const newContactObj = {
+        name: this.newContactName,
+        avatar: this.newContactImg,
+      };
+      console.log(this.contacts);
+      // push the new contact into contacts[]
+      this.contacts.push(newContactObj);
+      //empty the imput fields
+      this.newContactName = "";
+      this.newContactImg = "";
+      // close the pop up windows
+      this.addContactMenu = true;
+      this.appMenuVisibility = true;
+      console.log(this.appMenuVisibility);
+      console.log(this.addContactMenu);
+    },
+    // show app pop up menu
+    showAppMenu() {
+      this.appMenuVisibility = !this.appMenuVisibility;
+      console.log(this.appMenuVisibility);
+    },
+    // show new contact pop up window
+    showNewContactMenu() {
+      this.addContactMenu = !this.addContactMenu;
+      console.log(this.addContactMenu);
     },
   },
 }).mount("#app");
