@@ -173,6 +173,7 @@ createApp({
       userSearch: "",
       typing: false,
       chatOptions: false,
+      msgCount: true,
     };
   },
   methods: {
@@ -227,6 +228,7 @@ createApp({
       console.log(this.chatOptions);
     },
     deleteAllMsg(index) {
+      this.msgCount = !this.msgCount;
       console.log(this.contacts[index].messages);
       this.contacts[index].messages = [];
       this.chatOptions = false;
