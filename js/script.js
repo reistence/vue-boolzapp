@@ -188,16 +188,32 @@ createApp({
       };
       this.contacts[index].messages.push(newMsg);
       this.userMsg = "";
+      this.automaticMsg(index);
+    },
+    automaticMsg(index) {
+      setTimeout(() => {
+        let date = new Date().toLocaleString().replace(",", "");
+
+        const newMsg = {
+          date: date,
+          message: "ok",
+          status: "received",
+        };
+        this.contacts[index].messages.push(newMsg);
+      }, 2000);
     },
     deleteMsg(index) {
-      console.log(this.contacts[this.currentChat].messages[index]);
       this.contacts[this.currentChat].messages.splice(index, 1);
     },
     showMsgMenu(index) {
-      this.currentMsg = index;
-      console.log(this.contacts[this.currentChat].messages[index]);
-      this.msgMenu = !this.msgMenu;
-      console.log(this.msgMenu);
+      if (!this.msgMenu) {
+        this.currentMsg = index;
+        console.log(this.contacts[this.currentChat].messages[index]);
+        this.msgMenu = !this.msgMenu;
+        console.log(this.msgMenu);
+      } else {
+        this.msgMenu = false;
+      }
     },
   },
 }).mount("#app");
