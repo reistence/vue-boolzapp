@@ -96,7 +96,10 @@
                   {{chat.messages[chat.messages.length-1].message}}
                 </p>
               </div>
-              <span class="last-msg-time">12:30</span>
+              <span class="last-msg-time">
+                {{chat.messages[chat.messages.length-1].date.substring(0,
+                16)}}</span
+              >
             </div>
           </div>
           <!-- /CHATS -->
@@ -127,7 +130,7 @@
                   {{contact.messages[contact.messages.length-1].date}}
                 </p>
                 <p class="typing" v-else="typing">
-                  {{contact.name}} is typing....
+                  {{contact.name}} is typing ...
                 </p>
               </div>
             </div>
@@ -175,7 +178,12 @@
               id="msg"
               placeholder="Write a message"
             />
-            <i class="fa-solid fa-microphone"></i>
+            <i
+              @click="sendMsg(index)"
+              v-if="userMsg.length > 0"
+              class="fa-regular fa-paper-plane"
+            ></i>
+            <i v-else="userMsg.length = 0" class="fa-solid fa-microphone"></i>
           </div>
           <!--  INPUT MESSAGES -->
         </div>
