@@ -172,7 +172,7 @@ createApp({
       msgMenu: false,
       userSearch: "",
       typing: false,
-      chatOptions: true,
+      chatOptions: false,
       msgCount: true,
       rndAnswers: [
         "ciao",
