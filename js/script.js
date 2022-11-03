@@ -172,6 +172,7 @@ createApp({
       msgMenu: false,
       userSearch: "",
       typing: false,
+      chatOptions: false,
     };
   },
   methods: {
@@ -221,12 +222,18 @@ createApp({
         // console.log(this.currentMsg);
       }
     },
+    showChatOptions() {
+      this.chatOptions = !this.chatOptions;
+      console.log(this.chatOptions);
+    },
     deleteAllMsg(index) {
       console.log(this.contacts[index].messages);
       this.contacts[index].messages = [];
+      this.chatOptions = false;
     },
     deleteWholeChat(index) {
       this.contacts.splice(index, 1);
+      this.chatOptions = false;
     },
   },
 }).mount("#app");

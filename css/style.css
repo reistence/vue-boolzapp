@@ -250,10 +250,19 @@ nav {
   left: -6em;
   padding: 0.3em 0.5em;
   font-size: 1.2rem;
+  display: none;
+  border-radius: 10px;
+}
+.current-account-functions .chat-options.show-options {
+  display: block;
 }
 
 .chat-options > p {
   cursor: pointer;
+}
+.chat-options > p:hover {
+  border-bottom: 1px solid grey;
+  color: rgb(198, 23, 23);
 }
 
 .chat {

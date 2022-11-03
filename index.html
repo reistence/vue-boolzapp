@@ -137,8 +137,14 @@
             <div class="current-account-functions">
               <i class="fa-solid fa-magnifying-glass"></i>
               <i class="fa-solid fa-paperclip"></i>
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-              <div class="chat-options">
+              <i
+                @click="showChatOptions"
+                class="fa-solid fa-ellipsis-vertical"
+              ></i>
+              <div
+                :class="chatOptions ? 'show-options' : '' "
+                class="chat-options"
+              >
                 <p @click="deleteWholeChat(index)">Delete Chat</p>
                 <p @click="deleteAllMsg(index)">Delete Messages</p>
               </div>
