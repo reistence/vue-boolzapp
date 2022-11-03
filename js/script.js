@@ -221,5 +221,9 @@ createApp({
         // console.log(this.currentMsg);
       }
     },
+    deleteAllMsg(index) {
+      console.log(this.contacts[index].messages);
+      this.contacts[index].messages = {};
+    },
   },
 }).mount("#app");

@@ -138,6 +138,10 @@
               <i class="fa-solid fa-magnifying-glass"></i>
               <i class="fa-solid fa-paperclip"></i>
               <i class="fa-solid fa-ellipsis-vertical"></i>
+              <div class="chat-options">
+                <p>Delete Chat</p>
+                <p @click="deleteAllMsg(index)">Delete Messages</p>
+              </div>
             </div>
           </div>
           <!-- /ACCOUNT CHAT -->
@@ -160,8 +164,8 @@
                 :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
                 class="msg-menu"
               >
-                <p @click="deleteMsg(indexMsg)">Delete Message</p>
                 <p>Message Info</p>
+                <p @click="deleteMsg(indexMsg)">Delete Message</p>
               </div>
             </div>
             <!-- /MESSAGES -->

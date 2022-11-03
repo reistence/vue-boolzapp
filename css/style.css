@@ -238,6 +238,22 @@ nav {
   gap: 0.7em;
   color: grey;
   font-size: 1.4rem;
+  position: relative;
+}
+.current-account-functions .chat-options {
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  width: 10em;
+  height: 3.3em;
+  bottom: -80px;
+  left: -6em;
+  padding: 0.3em 0.5em;
+  font-size: 1.2rem;
+}
+
+.chat-options > p {
+  cursor: pointer;
 }
 
 .chat {
@@ -303,6 +319,9 @@ nav {
 }
 .msg-menu > p:hover {
   border-bottom: 1px solid grey;
+}
+.msg-menu > p:last-child:hover {
+  color: rgb(199, 21, 21);
 }
 .msg-menu.show-menu {
   display: block;
