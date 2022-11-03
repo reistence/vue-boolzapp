@@ -172,8 +172,15 @@ createApp({
       msgMenu: false,
       userSearch: "",
       typing: false,
-      chatOptions: false,
+      chatOptions: true,
       msgCount: true,
+      rndAnswers: [
+        "ciao",
+        "hey",
+        "Al momento non saprei dirti",
+        "Posso richiamarti dopo?",
+        "ok",
+      ],
     };
   },
   methods: {
@@ -198,9 +205,13 @@ createApp({
       setTimeout(() => {
         let date = new Date().toLocaleString().replace(",", "");
 
+        const rndMsg = Math.floor(
+          Math.random() * (this.rndAnswers.length - 1 - 0 + 1) + 0
+        );
+
         const newMsg = {
           date: date,
-          message: "ok",
+          message: this.rndAnswers[rndMsg],
           status: "received",
         };
         this.contacts[index].messages.push(newMsg);
@@ -225,7 +236,7 @@ createApp({
     },
     showChatOptions() {
       this.chatOptions = !this.chatOptions;
-      console.log(this.chatOptions);
+      // console.log(this.chatOptions);
     },
     deleteAllMsg(index) {
       this.msgCount = !this.msgCount;
