@@ -195,14 +195,9 @@ createApp({
     },
     showMsgMenu(index) {
       this.currentMsg = index;
-      console.log(this.contacts.messages[index]);
+      console.log(this.contacts[this.currentChat].messages[index]);
       this.msgMenu = !this.msgMenu;
       console.log(this.msgMenu);
     },
-    // filteredChats() {
-    //   return this.contacts.filter((contact) =>
-    //     contact.name.include(this.userSearch)
-    //   );
-    // },
   },
 }).mount("#app");

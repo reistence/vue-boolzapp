@@ -86,7 +86,9 @@
             <div class="chat-history-info">
               <div>
                 <p class="contact-name">{{chat.name}}</p>
-                <p class="last-msg">Ultimo messaggio</p>
+                <p class="last-msg">
+                  {{chat.messages[chat.messages.length-1].message}}
+                </p>
               </div>
               <span class="last-msg-time">12:30</span>
             </div>
@@ -141,7 +143,7 @@
               </span>
               <div
                 @click="deleteMsg(indexMsg)"
-                :class="msgMenu ? 'show-menu' : '' "
+                :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
                 class="msg-menu"
               >
                 <p>Delete Message</p>
