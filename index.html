@@ -81,7 +81,7 @@
             class="previous-chat"
           >
             <div class="contact-img">
-              <img :src="(`/img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
+              <img :src="(`img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
             </div>
             <div class="chat-history-info">
               <div>
@@ -110,13 +110,16 @@
             <div class="current-account-details">
               <img
                 class="current-contact-img"
-                src="img/avatar_2.jpg"
+                :src="(`img/avatar${contact.avatar}.jpg`)"
                 alt=""
                 srcset=""
               />
               <div>
                 <p class="current-contact-name">{{contact.name}}</p>
-                <p class="current-contact-last-access">ultimo accesso</p>
+                <p class="current-contact-last-access">
+                  Last seen:
+                  {{contact.messages[contact.messages.length-1].date}}
+                </p>
               </div>
             </div>
             <div class="current-account-functions">
