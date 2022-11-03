@@ -190,8 +190,8 @@ createApp({
       this.userMsg = "";
     },
     deleteMsg(index) {
-      console.log(this.contacts.message);
-      this.contacts.messages.splice(index, 1);
+      console.log(this.contacts[this.currentChat].messages[index]);
+      this.contacts[this.currentChat].messages.splice(index, 1);
     },
     showMsgMenu(index) {
       this.currentMsg = index;
