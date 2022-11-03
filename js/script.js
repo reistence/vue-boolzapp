@@ -180,6 +180,11 @@ createApp({
         "Al momento non saprei dirti",
         "Posso richiamarti dopo?",
         "ok",
+        "Non posso lamentarmi.",
+        "Certo",
+        "Grande",
+        "Non so proprio",
+        "bho",
       ],
     };
   },
