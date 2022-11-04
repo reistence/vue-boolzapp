@@ -311,6 +311,7 @@ createApp({
         avatar: this.newContactImg,
         visible: true,
         messages: [],
+        new: true,
       };
       // push the new contact into contacts[]
       this.contacts.unshift(newContactObj);
@@ -321,6 +322,7 @@ createApp({
       // close the pop up windows
       this.addContactMenu = true;
       this.appMenuVisibility = true;
+      // this.changeImgSrc();
       console.log(this.appMenuVisibility);
       console.log(this.addContactMenu);
     },
@@ -334,5 +336,12 @@ createApp({
       this.addContactMenu = !this.addContactMenu;
       console.log(this.addContactMenu);
     },
+    // changeImgSrc() {
+    //   // const newImg = document.getElementsByClassName("new");
+    //   // for (let i = 0; i < newImg.length; i++) {
+    //   //   newImg[i].src = `this.newContactImg`;
+    //   // }
+    //   this.newContactObj
+    // },
   },
 }).mount("#app");

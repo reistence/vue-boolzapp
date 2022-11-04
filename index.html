@@ -104,11 +104,13 @@
           >
             <div class="contact-img">
               <img
+                :class="chat.new === true ? 'new' : ''"
                 :src="(`img/avatar${chat.avatar}.jpg`)"
                 alt=""
                 srcset=""
-                onerror="this.onerror=null;this.src=`https://picsum.photos/200/300`;"
+                v-if="!chat.new"
               />
+              <img v-else="chat.new" :src="`${chat.avatar}`" alt="" />
             </div>
 
             <div class="chat-history-info">
@@ -143,12 +145,14 @@
           <div class="account">
             <div class="current-account-details">
               <img
+                :class="contact.new === true ? 'new' : ''"
                 class="current-contact-img"
                 :src="(`img/avatar${contact.avatar}.jpg`)"
                 alt=""
                 srcset=""
-                onerror="this.onerror=null;this.src=`https://picsum.photos/200/300`;"
+                v-if="!contact.new"
               />
+              <img v-else="contact.new" :src="`${contact.avatar}`" alt="" />
 
               <div>
                 <p class="current-contact-name">{{contact.name}}</p>
