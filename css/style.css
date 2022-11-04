@@ -225,7 +225,7 @@ nav {
   transform: scale(1.03);
 }
 
-/* CHAT HISTORY */
+/* CHAT HISTORY NAV*/
 
 .chat-history {
   width: 100%;
@@ -240,10 +240,9 @@ nav {
   display: flex;
   align-items: flex-start;
   cursor: pointer;
-  transition: 300ms;
 }
 .previous-chat:hover {
-  border-bottom: 1px solid rgb(176, 163, 163);
+  border-bottom: 1px solid rgb(214, 209, 209);
 }
 
 .contact-img {

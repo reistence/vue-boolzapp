@@ -167,13 +167,19 @@ createApp({
         },
       ],
       currentChat: 0,
+      // user message input bind
       userMsg: "",
       currentMsg: 0,
       msgMenu: false,
+      //user searchbar nav input bind
       userSearch: "",
+      // contact typing flag
       typing: false,
+      // chat options flag
       chatOptions: false,
+      //
       msgCount: true,
+      // rnd automated answers array
       rndAnswers: [
         "ciao",
         "hey",
@@ -279,7 +285,7 @@ createApp({
       console.log(this.contacts[index].messages);
       this.contacts[index].messages.splice(
         0,
-        this.contacts[index].messages.length
+        this.contacts[index].messages.length - 1
       );
       this.chatOptions = false;
       console.log(this.contacts[index].messages);
