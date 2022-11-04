@@ -277,11 +277,10 @@ createApp({
     deleteAllMsg(index) {
       this.msgCount = !this.msgCount;
       console.log(this.contacts[index].messages);
-      this.contacts[index].messages
-        .splice
-        // 0,
-        // this.contacts[index].messages.length - 1
-        ();
+      this.contacts[index].messages.splice(
+        0,
+        this.contacts[index].messages.length
+      );
       this.chatOptions = false;
       console.log(this.contacts[index].messages);
     },
