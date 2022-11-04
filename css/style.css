@@ -356,8 +356,9 @@ nav {
   background-image: url("../img/mine.jpg");
   width: 100%;
   height: calc(100% - 3em);
-  padding: 1em;
+  padding: 1.5em;
   overflow-y: scroll;
+
   display: flex;
   flex-direction: column;
 }
@@ -368,6 +369,7 @@ nav {
   width: fit-content;
   padding: 0.5em;
   display: flex;
+  font-size: 0.8rem;
   flex-direction: column;
   cursor: pointer;
   position: relative;
@@ -382,6 +384,7 @@ nav {
 .sent {
   background-color: #d5f9ba;
   right: 0;
+  min-width: 7.5em;
   padding: 0.5em 1.5em 0.5em 0.5em;
   align-self: flex-end;
   margin-bottom: 0.4em;
@@ -408,6 +411,7 @@ nav {
 .received {
   background-color: white;
   left: 0;
+  min-width: 6em;
   padding: 0.5em 1.5em 0.5em 0.5em;
   margin-right: 50%;
   margin-bottom: 0.4em;
@@ -441,9 +445,10 @@ nav {
 }
 
 .msg-menu {
+  border: 1px solid grey;
   position: absolute;
-  bottom: -70px;
-  width: 8em;
+  bottom: -55px;
+  width: 9em;
   height: 4em;
   left: -10px;
   background-color: white;
@@ -452,6 +457,7 @@ nav {
   z-index: 999;
   color: grey;
   display: none;
+  font-size: 0.8rem;
 }
 .msg-menu > p:hover {
   border-bottom: 1px solid grey;
@@ -471,10 +477,10 @@ nav {
   position: absolute;
   background-color: white;
   border-radius: 10px;
-
-  padding: 0.5em;
-  top: 70px;
-  width: 8em;
+  border: 1px solid grey;
+  padding: 0.3em;
+  top: 50px;
+  width: 10em;
   left: 0px;
   display: none;
 }
