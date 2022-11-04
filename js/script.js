@@ -282,13 +282,13 @@ createApp({
     // delete all the msgs of the current chat
     deleteAllMsg(index) {
       // this.msgCount = !this.msgCount;
-      console.log(this.contacts[index].messages);
+      // console.log(this.contacts[index].messages);
       this.contacts[index].messages.splice(
         0,
         this.contacts[index].messages.length
       );
       this.chatOptions = false;
-      console.log(this.contacts[index].messages);
+      // console.log(this.contacts[index].messages);
       this.typing = false;
       console.log(this.typing);
     },
@@ -315,7 +315,7 @@ createApp({
       };
       // push the new contact into contacts[]
       this.contacts.unshift(newContactObj);
-      console.log(this.contacts);
+      // console.log(this.contacts);
       //empty the imput fields
       this.newContactName = "";
       this.newContactImg = "";
@@ -323,18 +323,18 @@ createApp({
       this.addContactMenu = true;
       this.appMenuVisibility = true;
       // this.changeImgSrc();
-      console.log(this.appMenuVisibility);
-      console.log(this.addContactMenu);
+      // console.log(this.appMenuVisibility);
+      // console.log(this.addContactMenu);
     },
     // show app pop up menu
     showAppMenu() {
       this.appMenuVisibility = !this.appMenuVisibility;
-      console.log(this.appMenuVisibility);
+      // console.log(this.appMenuVisibility);
     },
     // show new contact pop up window
     showNewContactMenu() {
       this.addContactMenu = !this.addContactMenu;
-      console.log(this.addContactMenu);
+      // console.log(this.addContactMenu);
     },
     // changeImgSrc() {
     //   // const newImg = document.getElementsByClassName("new");

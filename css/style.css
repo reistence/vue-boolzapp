@@ -55,6 +55,7 @@ body {
 /* NAV */
 nav {
   width: 35%;
+  min-width: 255px;
   height: 100%;
   border-right: 1px solid rgb(214, 205, 205);
 }
@@ -280,6 +281,7 @@ nav {
 .main-content {
   height: 100%;
   width: 75%;
+  min-width: 350px;
 }
 .main-content .account {
   width: 100%;
@@ -484,8 +486,4 @@ nav {
   padding: 0.5em;
   border-radius: 9px;
   font-size: 1rem;
-}
-
-.new {
-  border: 1px solid black;
 }
