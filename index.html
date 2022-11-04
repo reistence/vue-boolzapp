@@ -105,14 +105,18 @@
             <div class="contact-img">
               <img :src="(`img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
             </div>
+
             <div class="chat-history-info">
               <div>
                 <p class="contact-name">{{chat.name}}</p>
-                <p class="last-msg">
+                <p v-if="contacts[index].messages.length > 0" class="last-msg">
                   {{chat.messages[chat.messages.length-1].message}}
                 </p>
               </div>
-              <span class="last-msg-time">
+              <span
+                v-if="contacts[index].messages.length > 0"
+                class="last-msg-time"
+              >
                 {{chat.messages[chat.messages.length-1].date.substring(0,
                 16)}}</span
               >
@@ -139,13 +143,20 @@
                 alt=""
                 srcset=""
               />
+
               <div>
                 <p class="current-contact-name">{{contact.name}}</p>
-                <p v-if="!typing" class="current-contact-last-access">
+                <p
+                  v-if="!typing && contacts[index].messages.length > 0"
+                  class="current-contact-last-access"
+                >
                   Last seen:
                   {{contact.messages[contact.messages.length-1].date}}
                 </p>
-                <p class="typing" v-else="typing">
+                <p
+                  class="typing"
+                  v-show="typing && contacts[index].messages.length > 0"
+                >
                   {{contact.name}} is typing ...
                 </p>
               </div>
@@ -174,7 +185,7 @@
               class="msg"
               v-for="message,indexMsg in contact.messages"
               :class="message.status === 'sent'? 'sent' : 'received' "
-              v-show="msgCount"
+              v-if="contacts[index].messages.length > 0 "
             >
               {{message.message}}
               <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>

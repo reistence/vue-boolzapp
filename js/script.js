@@ -192,6 +192,7 @@ createApp({
         "Non so proprio",
         "bho",
       ],
+      // add contact input fields binding
       newContactName: "",
       newContactImg: "",
       appMenuVisibility: true,
@@ -281,14 +282,16 @@ createApp({
     },
     // delete all the msgs of the current chat
     deleteAllMsg(index) {
-      this.msgCount = !this.msgCount;
+      // this.msgCount = !this.msgCount;
       console.log(this.contacts[index].messages);
       this.contacts[index].messages.splice(
         0,
-        this.contacts[index].messages.length - 1
+        this.contacts[index].messages.length
       );
       this.chatOptions = false;
       console.log(this.contacts[index].messages);
+      this.typing = false;
+      console.log(this.typing);
     },
     // delete whole object in contacts
     deleteWholeChat(index) {
@@ -304,13 +307,15 @@ createApp({
     // add new contact into contacts[]
     addNewContact() {
       // create new obj contact
-      const newContactObj = {
+      let newContactObj = {
         name: this.newContactName,
         avatar: this.newContactImg,
+        visible: true,
+        messages: [],
       };
-      console.log(this.contacts);
       // push the new contact into contacts[]
-      this.contacts.push(newContactObj);
+      this.contacts.unshift(newContactObj);
+      console.log(this.contacts);
       //empty the imput fields
       this.newContactName = "";
       this.newContactImg = "";
