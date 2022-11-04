@@ -178,7 +178,8 @@ createApp({
       typing: false,
       // chat options flag
       chatOptions: false,
-
+      // Change theme
+      dark: false,
       // rnd automated answers array
       rndAnswers: [
         "ciao",
@@ -200,6 +201,9 @@ createApp({
     };
   },
   methods: {
+    toggleTheme() {
+      this.dark = !this.dark;
+    },
     // show clicked chat in chat history and show it into main-content
     showChat(clickedChat) {
       this.currentChat = clickedChat;
@@ -336,6 +340,8 @@ createApp({
     // show app pop up menu
     showAppMenu() {
       this.appMenuVisibility = !this.appMenuVisibility;
+      this.addContactMenu = true;
+
       // console.log(this.appMenuVisibility);
     },
     // show new contact pop up window

@@ -36,211 +36,246 @@
   </head>
   <body>
     <div id="app">
-      <!-- NAV -->
-      <nav>
-        <!-- ACCOUNT -->
-        <div class="account">
-          <div class="account-info">
-            <img src="img/avatar_io.jpg" alt="" srcset="" />
-            <span class="account-name">Sofia</span>
-          </div>
-          <div class="account-functions">
-            <i class="fa-solid fa-circle-notch"></i>
-            <i class="fa-solid fa-message"></i>
-            <i @click="showAppMenu" class="fa-solid fa-ellipsis-vertical"></i>
-            <div :class="!appMenuVisibility ? 'active' : ''" class="app-menu">
-              <p @click="showNewContactMenu">Add new contact</p>
-            </div>
-            <div :class="!addContactMenu ? 'active' : ''" class="add-contact">
-              <div>
-                <label for="added-name">Insert contact name: </label>
-                <input type="text" id="added-name" v-model="newContactName" />
+      <div :class="dark ? 'darkmode' : ''" class="background">
+        <div class="main">
+          <!-- NAV -->
+          <nav>
+            <!-- ACCOUNT -->
+            <div class="account">
+              <div class="account-info">
+                <img src="img/avatar_io.jpg" alt="" srcset="" />
+                <span class="account-name">Sofia</span>
               </div>
-              <div>
-                <label for="added-name">Insert contact img url: </label>
-                <input type="text" id="added-name" v-model="newContactImg" />
-              </div>
-              <button @click="addNewContact" class="submit-contact">
-                Add new contact
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- /ACCOUNT -->
-        <!-- NOTIFICATIONS -->
-        <div class="notifications">
-          <div>
-            <i class="fa-solid fa-bell-slash"></i>
-          </div>
-          <div>
-            <p>Recieve new messages notifications</p>
-            <a href="">Activate desktop notifications</a>
-          </div>
-        </div>
-        <!-- NOTIFICATIONS -->
-
-        <!-- SEARCHBAR -->
-        <div class="searchbar">
-          <div class="div">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              v-model="userSearch"
-              type="text"
-              name="search-contacts"
-              id="search-contacts"
-              placeholder="Search for or begin a new chat"
-            />
-          </div>
-        </div>
-        <!-- /SEARCHBAR -->
-        <!-- CHAT HISTORY -->
-        <div class="chat-history">
-          <!-- CHATS -->
-          <div
-            v-for="chat,index in contacts"
-            v-show="chat.name.toLowerCase().includes(userSearch) "
-            @click="showChat(index)"
-            class="previous-chat"
-          >
-            <div class="contact-img">
-              <img
-                :src="(`img/avatar${chat.avatar}.jpg`)"
-                alt=""
-                srcset=""
-                v-if="!chat.new"
-              />
-              <img v-else="chat.new" :src="`${chat.avatar}`" alt="" />
-            </div>
-
-            <div class="chat-history-info">
-              <div>
-                <p class="contact-name">{{chat.name}}</p>
-                <p v-if="contacts[index].messages.length > 0" class="last-msg">
-                  {{chat.messages[chat.messages.length-1].message}}
-                </p>
-              </div>
-              <span
-                v-if="contacts[index].messages.length > 0"
-                class="last-msg-time"
-              >
-                {{chat.messages[chat.messages.length-1].date.substring(0,
-                16)}}</span
-              >
-            </div>
-          </div>
-          <!-- /CHATS -->
-        </div>
-        <!-- /CHAT HISTORY -->
-      </nav>
-      <!--/NAV -->
-      <!-- MAIN CONTENT -->
-      <div class="main-content">
-        <div
-          v-for="contact,index in contacts"
-          class="current-chat"
-          :class="currentChat === index ? 'active' : ''"
-        >
-          <!-- ACCOUNT CHAT -->
-          <div class="account">
-            <div class="current-account-details">
-              <img
-                class="current-contact-img"
-                :src="(`img/avatar${contact.avatar}.jpg`)"
-                alt=""
-                srcset=""
-                v-if="!contact.new"
-              />
-              <img v-else="contact.new" :src="`${contact.avatar}`" alt="" />
-
-              <div>
-                <p class="current-contact-name">{{contact.name}}</p>
-                <p
-                  v-if="!typing && contacts[index].messages.length > 0"
-                  class="current-contact-last-access"
+              <div class="account-functions">
+                <i class="fa-solid fa-circle-notch"></i>
+                <i class="fa-solid fa-message"></i>
+                <i
+                  @click="showAppMenu"
+                  class="fa-solid fa-ellipsis-vertical"
+                ></i>
+                <div
+                  :class="!appMenuVisibility ? 'active' : ''"
+                  class="app-menu"
                 >
-                  Last seen:
-                  {{contact.messages[contact.messages.length-1].date}}
-                </p>
-                <p
-                  class="typing"
-                  v-show="typing && contacts[index].messages.length > 0"
+                  <p @click="toggleTheme">Change theme</p>
+                  <p @click="showNewContactMenu">Add new contact</p>
+                </div>
+                <div
+                  :class="!addContactMenu ? 'active' : ''"
+                  class="add-contact"
                 >
-                  {{contact.name}} is typing ...
-                </p>
-              </div>
-            </div>
-            <div class="current-account-functions">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <i class="fa-solid fa-paperclip"></i>
-              <i
-                @click="showChatOptions"
-                class="fa-solid fa-ellipsis-vertical"
-              ></i>
-              <div
-                :class="chatOptions ? 'show-options' : '' "
-                class="chat-options"
-              >
-                <p @click="deleteWholeChat(index)">Delete Chat</p>
-                <p @click="deleteAllMsg(index)">Delete Messages</p>
-              </div>
-            </div>
-          </div>
-          <!-- /ACCOUNT CHAT -->
-          <!--  CHAT -->
-          <div class="chat">
-            <!-- MESSAGES -->
-            <div
-              class="msg"
-              v-for="message,indexMsg in contact.messages"
-              :class="message.status === 'sent'? 'sent' : 'received' "
-              v-if="contacts[index].messages.length > 0 "
-            >
-              {{message.message}}
-              <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>
-              <span @click="showMsgMenu(indexMsg)" class="msg-options">
-                <i class="fa-solid fa-chevron-down"></i>
-              </span>
-              <div
-                :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
-                class="msg-menu"
-              >
-                <p @click="showMsgInfo">Message Info</p>
-                <p @click="deleteMsg(indexMsg)">Delete Message</p>
-                <div :class="msgInfo ? 'active': ''" class="msg-info">
-                  <p>
-                    Sent:
-                    <span>
-                      {{contact.messages[contact.messages.length-1].date}}</span
-                    >
-                  </p>
+                  <div>
+                    <label for="added-name">Insert contact name: </label>
+                    <input
+                      type="text"
+                      id="added-name"
+                      v-model="newContactName"
+                    />
+                  </div>
+                  <div>
+                    <label for="added-name">Insert contact img url: </label>
+                    <input
+                      type="text"
+                      id="added-name"
+                      v-model="newContactImg"
+                    />
+                  </div>
+                  <button @click="addNewContact" class="submit-contact">
+                    Add new contact
+                  </button>
                 </div>
               </div>
             </div>
-            <!-- /MESSAGES -->
+            <!-- /ACCOUNT -->
+            <!-- NOTIFICATIONS -->
+            <div class="notifications">
+              <div>
+                <i class="fa-solid fa-bell-slash"></i>
+              </div>
+              <div>
+                <p>Recieve new messages notifications</p>
+                <a href="">Activate desktop notifications</a>
+              </div>
+            </div>
+            <!-- NOTIFICATIONS -->
+
+            <!-- SEARCHBAR -->
+            <div class="searchbar">
+              <div class="div">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  v-model="userSearch"
+                  type="text"
+                  name="search-contacts"
+                  id="search-contacts"
+                  placeholder="Search for or begin a new chat"
+                />
+              </div>
+            </div>
+            <!-- /SEARCHBAR -->
+            <!-- CHAT HISTORY -->
+            <div class="chat-history">
+              <!-- CHATS -->
+              <div
+                v-for="chat,index in contacts"
+                v-show="chat.name.toLowerCase().includes(userSearch)"
+                @click="showChat(index)"
+                class="previous-chat"
+              >
+                <div class="contact-img">
+                  <img
+                    :src="(`img/avatar${chat.avatar}.jpg`)"
+                    alt=""
+                    srcset=""
+                    v-if="!chat.new"
+                  />
+                  <img v-else="chat.new" :src="`${chat.avatar}`" alt="" />
+                </div>
+
+                <div class="chat-history-info">
+                  <div>
+                    <p class="contact-name">{{chat.name}}</p>
+                    <p
+                      v-if="contacts[index].messages.length > 0"
+                      class="last-msg"
+                    >
+                      {{chat.messages[chat.messages.length-1].message}}
+                    </p>
+                  </div>
+                  <span
+                    v-if="contacts[index].messages.length > 0"
+                    class="last-msg-time"
+                  >
+                    {{chat.messages[chat.messages.length-1].date.substring(0,
+                    16)}}</span
+                  >
+                </div>
+              </div>
+              <p
+                v-for="yo in contacts"
+                v-show="!yo.name.toLowerCase().includes(userSearch)"
+              >
+                not found
+              </p>
+              <!-- /CHATS -->
+            </div>
+
+            <!-- /CHAT HISTORY -->
+          </nav>
+          <!--/NAV -->
+          <!-- MAIN CONTENT -->
+          <div class="main-content">
+            <div
+              v-for="contact,index in contacts"
+              class="current-chat"
+              :class="currentChat === index ? 'active' : ''"
+            >
+              <!-- ACCOUNT CHAT -->
+              <div class="account">
+                <div class="current-account-details">
+                  <img
+                    class="current-contact-img"
+                    :src="(`img/avatar${contact.avatar}.jpg`)"
+                    alt=""
+                    srcset=""
+                    v-if="!contact.new"
+                  />
+                  <img v-else="contact.new" :src="`${contact.avatar}`" alt="" />
+
+                  <div>
+                    <p class="current-contact-name">{{contact.name}}</p>
+                    <p
+                      v-if="!typing && contacts[index].messages.length > 0"
+                      class="current-contact-last-access"
+                    >
+                      Last seen:
+                      {{contact.messages[contact.messages.length-1].date}}
+                    </p>
+                    <p
+                      class="typing"
+                      v-show="typing && contacts[index].messages.length > 0"
+                    >
+                      {{contact.name}} is typing ...
+                    </p>
+                  </div>
+                </div>
+                <div class="current-account-functions">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <i class="fa-solid fa-paperclip"></i>
+                  <i
+                    @click="showChatOptions"
+                    class="fa-solid fa-ellipsis-vertical"
+                  ></i>
+                  <div
+                    :class="chatOptions ? 'show-options' : '' "
+                    class="chat-options"
+                  >
+                    <p @click="deleteWholeChat(index)">Delete Chat</p>
+                    <p @click="deleteAllMsg(index)">Delete Messages</p>
+                  </div>
+                </div>
+              </div>
+              <!-- /ACCOUNT CHAT -->
+              <!--  CHAT -->
+              <div class="chat">
+                <!-- MESSAGES -->
+                <div
+                  class="msg"
+                  v-for="message,indexMsg in contact.messages"
+                  :class="message.status === 'sent'? 'sent' : 'received' "
+                  v-if="contacts[index].messages.length > 0 "
+                >
+                  {{message.message}}
+                  <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>
+                  <span @click="showMsgMenu(indexMsg)" class="msg-options">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                  <div
+                    :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
+                    class="msg-menu"
+                  >
+                    <p @click="showMsgInfo">Message Info</p>
+                    <p @click="deleteMsg(indexMsg)">Delete Message</p>
+                    <div :class="msgInfo ? 'active': ''" class="msg-info">
+                      <p>
+                        Sent:
+                        <span>
+                          {{contact.messages[contact.messages.length-1].date}}</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /MESSAGES -->
+              </div>
+              <!-- /CHAT -->
+              <!--  INPUT MESSAGES -->
+              <div class="write-input">
+                <i class="fa-regular fa-face-smile"></i>
+                <input
+                  @keyup.enter="sendMsg(index)"
+                  v-model="userMsg"
+                  type="text"
+                  name="msg"
+                  id="msg"
+                  placeholder="Write a message"
+                />
+                <i
+                  @click="sendMsg(index)"
+                  v-if="userMsg.length > 0"
+                  class="fa-regular fa-paper-plane"
+                ></i>
+                <i
+                  v-else="userMsg.length = 0"
+                  class="fa-solid fa-microphone"
+                ></i>
+              </div>
+              <!--  INPUT MESSAGES -->
+            </div>
           </div>
-          <!-- /CHAT -->
-          <!--  INPUT MESSAGES -->
-          <div class="write-input">
-            <i class="fa-regular fa-face-smile"></i>
-            <input
-              @keyup.enter="sendMsg(index)"
-              v-model="userMsg"
-              type="text"
-              name="msg"
-              id="msg"
-              placeholder="Write a message"
-            />
-            <i
-              @click="sendMsg(index)"
-              v-if="userMsg.length > 0"
-              class="fa-regular fa-paper-plane"
-            ></i>
-            <i v-else="userMsg.length = 0" class="fa-solid fa-microphone"></i>
-          </div>
-          <!--  INPUT MESSAGES -->
+          <!-- MAIN CONTENT -->
         </div>
       </div>
-      <!-- MAIN CONTENT -->
     </div>
     <script src="js/script.js"></script>
   </body>
