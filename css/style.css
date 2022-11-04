@@ -439,8 +439,8 @@ nav {
 .msg .msg-options {
   position: absolute;
   right: 3px;
-  height: 3rem;
-  font-size: 1.1rem;
+  height: 2rem;
+  font-size: 0.8rem;
   visibility: hidden;
 }
 
@@ -476,7 +476,7 @@ nav {
 .msg-info {
   position: absolute;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 1px solid grey;
   padding: 0.3em;
   top: 50px;
