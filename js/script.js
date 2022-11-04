@@ -204,6 +204,7 @@ createApp({
       this.currentChat = clickedChat;
       this.currentMsg = null;
       this.msgCount = true;
+      this.typing = false;
     },
     // send msg
     sendMsg(index) {
