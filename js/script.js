@@ -210,7 +210,7 @@ createApp({
     // send msg
     sendMsg(index) {
       // only if not empty string
-      if (this.userMsg != "") {
+      if (this.userMsg.trim() != "") {
         // get current date and time
         let date = new Date().toLocaleString().replace(",", "");
         // create new masg obj
