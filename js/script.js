@@ -178,7 +178,7 @@ createApp({
       typing: false,
       // chat options flag
       chatOptions: false,
-      // Change theme
+      // Change theme flag
       dark: false,
       // rnd automated answers array
       rndAnswers: [
@@ -201,6 +201,7 @@ createApp({
     };
   },
   methods: {
+    // darkmode theme toggle
     toggleTheme() {
       this.dark = !this.dark;
     },
