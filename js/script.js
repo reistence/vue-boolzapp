@@ -336,12 +336,5 @@ createApp({
       this.addContactMenu = !this.addContactMenu;
       // console.log(this.addContactMenu);
     },
-    // changeImgSrc() {
-    //   // const newImg = document.getElementsByClassName("new");
-    //   // for (let i = 0; i < newImg.length; i++) {
-    //   //   newImg[i].src = `this.newContactImg`;
-    //   // }
-    //   this.newContactObj
-    // },
   },
 }).mount("#app");
