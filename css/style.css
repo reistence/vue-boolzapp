@@ -247,7 +247,7 @@ nav {
 
 .contact-img {
   height: 100%;
-  width: 20%;
+  width: 4em;
 }
 .previous-chat .contact-img img {
   width: 3em;
@@ -300,6 +300,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0.4em;
+  gap: 0.4em;
   align-items: center;
 }
 .current-account-details img {

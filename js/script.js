@@ -177,8 +177,7 @@ createApp({
       typing: false,
       // chat options flag
       chatOptions: false,
-      //
-      msgCount: true,
+
       // rnd automated answers array
       rndAnswers: [
         "ciao",

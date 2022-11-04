@@ -103,7 +103,12 @@
             class="previous-chat"
           >
             <div class="contact-img">
-              <img :src="(`img/avatar${chat.avatar}.jpg`)" alt="" srcset="" />
+              <img
+                :src="(`img/avatar${chat.avatar}.jpg`)"
+                alt=""
+                srcset=""
+                onerror="this.onerror=null;this.src=`https://picsum.photos/200/300`;"
+              />
             </div>
 
             <div class="chat-history-info">
@@ -142,6 +147,7 @@
                 :src="(`img/avatar${contact.avatar}.jpg`)"
                 alt=""
                 srcset=""
+                onerror="this.onerror=null;this.src=`https://picsum.photos/200/300`;"
               />
 
               <div>
