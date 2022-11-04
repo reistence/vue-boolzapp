@@ -467,6 +467,29 @@ nav {
   visibility: visible;
 }
 
+.msg-info {
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+
+  padding: 0.5em;
+  top: 64px;
+  width: 13em;
+  left: 0;
+  display: none;
+}
+.msg-info p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.msg-info span {
+  font-size: 0.8rem;
+}
+.msg-info.active {
+  display: block;
+}
+
 /* TYPE INPUT */
 .write-input {
   background-color: #eaeaea;

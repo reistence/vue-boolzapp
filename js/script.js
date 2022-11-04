@@ -171,6 +171,7 @@ createApp({
       userMsg: "",
       currentMsg: 0,
       msgMenu: false,
+      msgInfo: false,
       //user searchbar nav input bind
       userSearch: "",
       // contact typing flag
@@ -269,11 +270,16 @@ createApp({
         // console.log(this.currentMsg);
         // console.log(this.contacts[this.currentChat].messages[index]);
         this.msgMenu = !this.msgMenu;
+        this.msgInfo = false;
       } else {
         this.currentMsg = null;
         this.msgMenu = false;
+        this.msgInfo = false;
         // console.log(this.currentMsg);
       }
+    },
+    showMsgInfo() {
+      this.msgInfo = !this.msgInfo;
     },
     // show chat options menu when dots are clicked
     showChatOptions() {

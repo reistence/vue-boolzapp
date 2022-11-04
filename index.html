@@ -204,8 +204,16 @@
                 :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
                 class="msg-menu"
               >
-                <p>Message Info</p>
+                <p @click="showMsgInfo">Message Info</p>
                 <p @click="deleteMsg(indexMsg)">Delete Message</p>
+                <div :class="msgInfo ? 'active': ''" class="msg-info">
+                  <p>
+                    Sent:
+                    <span>
+                      {{contact.messages[contact.messages.length-1].date}}</span
+                    >
+                  </p>
+                </div>
               </div>
             </div>
             <!-- /MESSAGES -->
