@@ -33,6 +33,8 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&display=swap"
       rel="stylesheet"
     />
+    <!-- emoji -->
+    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
   </head>
   <body>
     <div id="app">
@@ -252,6 +254,7 @@
               <!--  INPUT MESSAGES -->
               <div class="write-input">
                 <i class="fa-regular fa-face-smile"></i>
+
                 <input
                   @keyup.enter="sendMsg(index)"
                   v-model="userMsg"
