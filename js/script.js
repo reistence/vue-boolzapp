@@ -355,5 +355,12 @@ createApp({
       this.addContactMenu = true;
       this.appMenuVisibility = true;
     },
+    filteredContacts() {
+      this.contacts.forEach((contact) => {
+        contact.visible = contact.name
+          .toLowerCase()
+          .includes(this.userSearch.toLowerCase());
+      });
+    },
   },
 }).mount("#app");

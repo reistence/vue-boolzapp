@@ -111,6 +111,7 @@
                   name="search-contacts"
                   id="search-contacts"
                   placeholder="Search for or begin a new chat"
+                  @keyup="filteredContacts"
                 />
               </div>
             </div>
@@ -120,7 +121,7 @@
               <!-- CHATS -->
               <div
                 v-for="chat,index in contacts"
-                v-show="chat.name.toLowerCase().includes(userSearch)"
+                v-show="chat.visible"
                 @click="showChat(index)"
                 class="previous-chat"
               >
