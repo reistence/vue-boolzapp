@@ -171,6 +171,7 @@
               v-for="contact,index in contacts"
               class="current-chat"
               :class="currentChat === index ? 'active' : ''"
+              @click="closeTabs"
             >
               <!-- ACCOUNT CHAT -->
               <div class="account">
@@ -229,15 +230,15 @@
                 >
                   {{message.message}}
                   <span>{{message.date.split(" ")[1].substring(0, 5)}}</span>
-                  <span @click="showMsgMenu(indexMsg)" class="msg-options">
+                  <span @click.stop="showMsgMenu(indexMsg)" class="msg-options">
                     <i class="fa-solid fa-chevron-down"></i>
                   </span>
                   <div
                     :class="msgMenu && indexMsg === currentMsg ? 'show-menu' : '' "
                     class="msg-menu"
                   >
-                    <p @click="showMsgInfo">Message Info</p>
-                    <p @click="deleteMsg(indexMsg)">Delete Message</p>
+                    <p @click.stop="showMsgInfo">Message Info</p>
+                    <p @click.stop="deleteMsg(indexMsg)">Delete Message</p>
                     <div :class="msgInfo ? 'active': ''" class="msg-info">
                       <p>
                         Sent:
@@ -254,7 +255,6 @@
               <!--  INPUT MESSAGES -->
               <div class="write-input">
                 <i class="fa-regular fa-face-smile"></i>
-
                 <input
                   @keyup.enter="sendMsg(index)"
                   v-model="userMsg"

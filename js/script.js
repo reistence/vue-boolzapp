@@ -209,7 +209,6 @@ createApp({
     showChat(clickedChat) {
       this.currentChat = clickedChat;
       this.currentMsg = null;
-      this.msgCount = true;
       this.typing = false;
     },
     // send msg
@@ -349,6 +348,12 @@ createApp({
     showNewContactMenu() {
       this.addContactMenu = !this.addContactMenu;
       // console.log(this.addContactMenu);
+    },
+    closeTabs() {
+      this.msgMenu = false;
+      this.msgInfo = false;
+      this.addContactMenu = true;
+      this.appMenuVisibility = true;
     },
   },
 }).mount("#app");
