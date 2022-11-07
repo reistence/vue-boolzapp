@@ -479,7 +479,7 @@ nav {
 /* MESSAGE MENU */
 .msg .msg-options {
   position: absolute;
-  color: darkslategray;
+  color: var(--txtsecondary);
   right: 3px;
   height: 2rem;
   font-size: 0.8rem;
