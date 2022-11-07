@@ -349,12 +349,14 @@ createApp({
       this.addContactMenu = !this.addContactMenu;
       // console.log(this.addContactMenu);
     },
+    // close all pop ups windows
     closeTabs() {
       this.msgMenu = false;
       this.msgInfo = false;
       this.addContactMenu = true;
       this.appMenuVisibility = true;
     },
+    // filter contacts according to userSearch using contact.visible
     filteredContacts() {
       this.contacts.forEach((contact) => {
         contact.visible = contact.name
